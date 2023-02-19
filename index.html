@@ -142,6 +142,11 @@
             voluptas voluptates consectetur, minima tempore.</p>
 
     </section>
+    <section class="m-5">
+        <bsk-transition hide="false"></bsk-transition>
+
+    </section>
+
     <bsk-to-top></bsk-to-top>
     <bsk-clear-filters text="default"></bsk-clear-filters>
 
@@ -209,17 +214,58 @@
         </div>
     </template><template bsk-element="bsk-clear-filters">
         <a class="h-100 flex-c small" href="#" @click.prevent="resetAll">
-            {{store.msg}}
             <u>{{text}}</u>
             <i class="ms-2 fa-light fa-circle-xmark text-primary" style="transform: translateY(2px);"></i>
         </a>
     </template>
+
+    <template bsk-element="bsk-transition">
+        <style>
+            .duration-1 {
+                transition: 600ms ease-in-out;
+            }
+            .duration-2 {
+                transition: 900ms ease-in-out;
+            }
+        </style>
+    <div>
+        <p>show state: {{ hide }}</p>
+          <button @click="hide = !hide" class="btn btn-primary" > make state {{ !hide }} </button>
+
+        <div
+          v-transition:show="!hide"
+          v-transition:enter="duration-1"
+          v-transition:enter-from="opacity-0 text-danger"
+          v-transition:enter-to="opacity-100 text-primary"
+          v-transition:entered="hidden"
+          v-transition:leave="duration-2"
+          v-transition:leave-from="opacity-100 text-primary"
+          v-transition:leave-to="opacity-0 text-danger"
+        >  Will show when bool is false
+        </div>
+        <div
+        v-transition:show="hide"
+        v-transition:enter="duration-1"
+        v-transition:enter-from="opacity-0 text-danger"
+        v-transition:enter-to="opacity-100 text-primary"
+        v-transition:entered="hidden"
+        v-transition:leave="duration-2"
+        v-transition:leave-from="opacity-100 text-primary"
+        v-transition:leave-to="opacity-0 text-danger"
+      >  Will show when bool is true
+      </div>
+
+      </div>
+
+    </template>
+
     <!-- Templates : END -->
     <script type="importmap">
 
         {
             "imports": {
-              "petite-vue" : "https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.es.js"
+              "petite-vue" : "https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.es.js",
+              "vue-petite-transition" : "https://unpkg.com/vue-petite-transition@2.0.0/dist/vue-petite-transition.es.js"
             }
           }
 

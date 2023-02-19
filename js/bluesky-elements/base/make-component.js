@@ -13,12 +13,12 @@ export function makeComponent(tagName, templateId, state = {}) {
     connectedCallback() {
       this.setAttribute(definingAttr, '');
       if (Object.keys(state).includes('mounted')) {
-        this.state.mounted()
+        state.mounted()
       }
     }
     disconnectedCallback() {
       if (Object.keys(state).includes('unmounted')) {
-        this.state.unmounted()
+        state.unmounted()
       }
     }
   };
