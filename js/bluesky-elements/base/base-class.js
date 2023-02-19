@@ -1,4 +1,5 @@
 import { createApp } from "petite-vue";
+import { store } from "./store.js";
 
 export class baseEl extends HTMLElement {
   constructor() {
@@ -23,9 +24,9 @@ export class baseEl extends HTMLElement {
   }
 
   mountEl(selector, state) {
-    this.state = { ...state, ...this.state };
+    const ComponentState = { ...state, ...this.state }
     const template = document.querySelector(`${selector}`);
     this.appendChild(template.content.cloneNode(true));
-    createApp(this.state).mount(this);
+    createApp({ComponentState, store}).mount(this);
   }
 }

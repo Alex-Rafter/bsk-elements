@@ -186,6 +186,8 @@
         <!-- Return to Top : START -->
         <div class="cursor-pointer" @click="document.documentElement.scrollTop = 0">
             To Top
+            <br>
+            {{store.msg}}
             <i class="fa-regular fa-arrow-up-from-line ms-3"></i>
         </div>
         <!-- Return to Top : END -->
@@ -201,11 +203,13 @@
             }
         </style>
         <div @click="triggerToggle" class="flex-c d-lg-none" :class="[{'showing' : showFullText}, extraClass ]">
+            {{store.msg}}
             <u>Read more</u>
             <i class="ms-3 fa-regular fa-angle-down"></i>
         </div>
     </template><template bsk-element="bsk-clear-filters">
         <a class="h-100 flex-c small" href="#" @click.prevent="resetAll">
+            {{store.msg}}
             <u>{{text}}</u>
             <i class="ms-2 fa-light fa-circle-xmark text-primary" style="transform: translateY(2px);"></i>
         </a>

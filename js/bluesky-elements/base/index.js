@@ -1,5 +1,5 @@
 import { createGlobalState } from "./store.js";
-import {autoGenerateBskElements} from "./auto-el.js";
+import { autoGenerateBskElements } from "./auto-bsk-elements.js";
 
 createGlobalState();
 autoGenerateBskElements();
